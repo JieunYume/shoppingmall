@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "members", schema = "marico")
+@Table(name = "members")
 public class Member implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,29 +34,32 @@ public class Member implements UserDetails {
     @Column(unique = true,nullable = false)
     private String email;
 
-    @Column(unique = true, nullable = false)
-    private String userId;
-
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false, unique = true)
-    private String nickname;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private char gender;
 
-    @Column
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private boolean smsAcceptance;
+
+    @Column(nullable = false)
+    private boolean emailAcceptance;
+
+
+    @Column(nullable = false)
     private LocalDate birthDate;
-
-    @Column
-    private String residence;
-
-    @Column
-    private String profileImage;
 
     @Column(nullable = false)
     private boolean enabled;
+
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -76,7 +79,7 @@ public class Member implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.userId;
+        return this.email;
     }
 //    GrantedAuthority 객체를 생성할 때 문자열 변환이 필요하지 않기 때문에 유연성이 높아지며, roles 필드를 추가적으로 변경해야 할 경우, 해당 필드만 수정하면 되므로 유지보수가 용이
 
