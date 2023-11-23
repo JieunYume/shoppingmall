@@ -2,6 +2,7 @@ spring:
   config:
     import:
       - classpath:/application-jwt-secret.yml
+      - classpath:/application-email.yml
   h2:
     console:
       enabled: true

@@ -1,4 +1,4 @@
-package heo.web.assignment.controller.auth;
+package heo.web.assignment.controller;
 
 import heo.web.assignment.dto.LoginDto;
 import heo.web.assignment.dto.findId.SendEmailRequestDto;

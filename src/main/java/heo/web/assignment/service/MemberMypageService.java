@@ -16,7 +16,7 @@ import static heo.web.assignment.exception.ErrorCode.USER_NOT_FOUND;
 public class MemberMypageService {
     private final MemberRepository memberRepository;
     @Transactional
-    public MypageDto mypage(String email) {
+    public MypageDto findMypage(String email) {
         Member member = memberRepository.findByEmail(email).orElseThrow(
                 () -> new CustomException(USER_NOT_FOUND));
         return MypageDto.toDto(member);

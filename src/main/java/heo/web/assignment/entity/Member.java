@@ -10,9 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -59,7 +57,14 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
+    @OneToMany(mappedBy = "member")
+    private List<Inquiry> inquiries = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member")
+    private List<Wish> wishlists = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Cart> carts = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
