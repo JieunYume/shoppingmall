@@ -39,6 +39,10 @@ public class CartService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomException(PRODUCT_NOT_FOUND));
 
+        if(cartRepository.findByMemberAndProduct(member, product).isEmpty() == false){
+            throw new CustomException(ALREADY_SAVED_CART_PRODUCT);
+        }
+
         Cart cart = Cart.builder()
                 .member(member)
                 .product(product)

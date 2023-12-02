@@ -34,6 +34,10 @@ public class WishService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomException(PRODUCT_NOT_FOUND));
 
+        if(wishRepository.findByMemberAndProduct(member, product).isEmpty() == false){
+            throw new CustomException(ALREADY_SAVED_WISH_PRODUCT);
+        }
+
         Wish wishlist = Wish.builder()
                 .member(member)
                 .product(product)
@@ -42,9 +46,11 @@ public class WishService {
         wishRepository.save(wishlist);
         return new SuccessDto("위시리스트에 상품을 성공적으로 추가했습니다.");
     }
+
     public WishlistDto findWishlist(String email) {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new CustomException(USER_NOT_FOUND));
+
         List<Wish> wishlist = member.getWishlists();
         List<WishDto> wishDtoList = new ArrayList<>();
 

@@ -23,7 +23,6 @@ import static heo.web.assignment.exception.ErrorCode.*;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class NoticeService {
-    private final MemberRepository memberRepository;
     private final NoticeRepository noticeRepository;
 
     // 임시로 공지사항 추가 메소드 만듬 -> 관리자만 가능하게 수정하거나 없애야 함

@@ -33,6 +33,8 @@ public enum ErrorCode {
     ALREADY_SAVED_NICKNAME(409, "이미 저장된 닉네임입니다."),
     ALREADY_SAVED_EMAIL(409, "이미 저장된 이메일입니다."),
     ALREADY_SAVED_PHONE_NUMBER(409, "이미 저장된 전화번호입니다."),
+    ALREADY_SAVED_WISH_PRODUCT(409, "이미 위시에 저장된 상품입니다."),
+    ALREADY_SAVED_CART_PRODUCT(409, "이미 장바구니에 저장된 상품입니다."),
 
     //419 Authentication Timeout
     VERIFICATION_CODE_TIMEOUT(419, "발급 코드의 인증 시간이 초과 되었습니다."),

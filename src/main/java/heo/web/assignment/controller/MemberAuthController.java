@@ -82,7 +82,7 @@ public class MemberAuthController {
         return ResponseEntity.ok(ApiUtils.success(verificationTokenService.returnUserEmail(code)));
     }
 
-    @PatchMapping("/search/password") //Restful 한 Url 설계가 필요해보입니다!
+    @PatchMapping("/search/password")
     public ResponseEntity<?> checkCodeForPwd(@RequestBody NewPwdRequestDto newPwdRequestDto) throws Exception {
         return ResponseEntity.ok(ApiUtils.success(memberAuthService.changePassword(newPwdRequestDto)));
     }

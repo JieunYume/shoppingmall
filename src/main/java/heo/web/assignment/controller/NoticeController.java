@@ -15,9 +15,13 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/notice")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 public class NoticeController {
     private final NoticeService noticeService;
+
+
+
     // 작성
     @PostMapping("/")
     public ResponseEntity<NoticeCreateResponse> createNotice(@RequestBody NoticeCreateRequest noticeCreateRequest) {
@@ -26,6 +30,7 @@ public class NoticeController {
     }
 
     // 조회 1. 게시판
+    @CrossOrigin(origins = "http://localhost:5500")
     @GetMapping("/list")
     public ResponseEntity<Object> findNoticeList() {
         return ResponseEntity.ok(noticeService.findNoticeList());
